@@ -1,0 +1,35 @@
+<ion-view title="Yoga" id="page8">
+    <ion-content padding="true" class="has-header">
+        <div class="list card" id="yoga-card21">
+            <form id="yoga-form6" class="list">
+                <label class="item item-select" id="yoga-select2">
+                    <span class="input-label">Select Pose</span>
+                    <select ng-options="yogaPoseSelects as yogaPoseSelects.name for yogaPoseSelects in yogaPoseSelect" ng-model="yogaPoseSelected" ng-change="update(yogaPoseSelected)">
+                        <option value="">Select Pose</option>
+                    </select>
+                </label>
+            </form>
+            <div style="position:relative;overflow:hidden;padding-bottom:56.25%;height:0;" id="yoga-video2">
+                <iframe ng-src="{{videoURL}}" frameborder="0" allowfullscreen="" width="560" height="315" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+            </div>
+        </div>
+        <div ng-controller="timerCtrl">
+            <div ng-repeat="options in stopwatches">
+                <div bb-stopwatch options="options">
+                    <div class="container">
+                        <div class="stopWatch numbers">
+                            {{options.elapsedTime | stopwatchTime}}
+                        </div><br />
+                        <button class="button button-balanced" ng-click="startTimer()">Start</button>
+                        <button class="button button-assertive" ng-click="stopTimer()">Stop</button>
+                        <button class="button button-energized" ng-click="resetTimer()">Reset</button>
+                    </div>
+                </div>
+                <div class="log" ng-repeat="log in options.log">
+                    {{log/1000}} seconds
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

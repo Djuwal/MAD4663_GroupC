@@ -1,0 +1,60 @@
+<ion-view title="Active Time" id="page11">
+    <ion-content padding="true" class="has-header" ng-controller="activeMinutesCtrl">
+        <form id="activeMinutes-form10" class="list">
+            <ion-item class="item-icon-left" id="activeMinutes-list-item35">
+                <i class="icon ion-android-bicycle"></i>{{theActiveTot}}
+            </ion-item>
+            <div class="spacer" style="width: 300px; height: 14px;"></div>
+            <ion-item class="item-divider" id="activeMinutes-list-item-divider10"> Track Active Time</ion-item>
+            <div ng-controller="timerCtrl">
+                <div ng-repeat="options in stopwatches">
+                    <div bb-stopwatch options="options">
+                        <div class="container">
+                            <div class="stopWatch numbers">
+                                {{options.elapsedTime | stopwatchTime}}
+                            </div><br />
+                            <button class="button button-balanced" ng-click="startTimer()">Start</button>
+                            <button class="button button-assertive" ng-click="stopTimer()">Stop</button>
+                            <button class="button button-energized" ng-click="resetTimer()">Reset</button>
+                        </div>
+                    </div>
+                    <div class="log" ng-repeat="log in options.log">
+                        {{log/1000}} seconds
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="item item-divider item-calm">
+                    Active Time History
+                </div>
+                <div class="item item-text-wrap">
+                    <div class="table2">
+                        <div class="row" style="border-bottom: 0.5px solid #4588ba;">
+                            <div class="col col-50"><strong>Date</strong></div>
+                            <div class="col col-100"><strong>Active Time</strong></div>
+                        </div>
+                        <div class="row" ng-repeat="item in alldata | limitTo: 5" style="border-bottom: 0.5px solid #4588ba;">
+                            <div class="col col-50">{{item.theDate | date:'MM/dd/yyyy'}}</div>
+                            <div class="col col-100">{{item.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Use this to show all records
+            <label class="item item-input" id="activeMinutes-textarea5">
+                <span class="input-label">Past 5 Days</span>
+            </label>
+            <div class="table3">
+                <div class="row" style="border-bottom: 0.5px solid #4588ba;">
+                    <div class="col col-50"><strong>Date</strong></div>
+                    <div class="col col-100"><strong>Active Time</strong></div>
+                </div>
+                <div class="row" ng-repeat="item in theRecords" style="border-bottom: 0.5px solid #4588ba;">
+                    <div class="col col-50">{{item.theDate | date:'MM/dd/yyyy'}}</div>
+                    <div class="col col-100">{{item.TimeValue}}</div>
+                </div>
+            </div>-->
+
+        </form>
+    </ion-content>
+</ion-view>

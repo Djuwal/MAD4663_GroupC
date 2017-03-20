@@ -1,0 +1,22 @@
+<ion-view title="Trackers" id="page4">
+    <ion-content padding="true" class="has-header" ng-controller="trackerCountCtrl">
+        <div>Activity for: {{date | date:'MM/dd/yyyy'}}</div>
+        <ion-list id="trackers-list11">
+            <ion-item class="item-divider item-royal" id="trackers-list-item-divider5"> Step Count</ion-item>
+            <ion-item id="trackers-list-item30" ui-sref="tabsController.steps">
+                {{theStepTot}}
+                <span class="item-note">steps</span>
+            </ion-item>
+            <ion-item class="item-divider item-energized" id="trackers-list-item-divider6"> Active Time</ion-item>
+            <ion-item id="trackers-list-item31" ui-sref="tabsController.activeMinutes">
+                {{theActiveTot}}
+                <span class="item-note">Hour:Min:Sec</span>
+            </ion-item>
+            <ion-item class="item-divider item-calm" id="trackers-list-item-divider7"> Calorie Count</ion-item>
+            <ion-item id="trackers-list-item32" ui-sref="tabsController.calories">
+                {{theCalorieTot}}
+                <span class="item-note">calories</span>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

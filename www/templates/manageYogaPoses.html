@@ -1,0 +1,80 @@
+<ion-view title="Manage Yoga Poses" id="page25">
+    <ion-content padding="true" class="has-header" ng-controller="manageYogaPosesCtrl">
+        <ion-list id="existingPoses">
+            <div class="item item-divider">
+                Existing Poses
+            </div>
+            <ion-item collection-repeat="item in yogaPoses">
+                <span style="font-weight:bold;">{{item.YogaPoseName}}</span><br />
+                URL: {{item.YogaVideoURL}}
+                <ion-option-button class="button-info" ng-click="showEditPose(item)">Edit</ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="showDeletePose(item)">Delete</ion-option-button>
+            </ion-item>
+            </ion-list>
+        <ion-list id="addNewPose">
+            <div class="item item-divider">
+                Add Pose
+            </div>
+            <ion-item>
+                <form name="form" ng-submit="addPose(pose)" novalidate>
+                    <label class="item item-input">
+                        <input type="text" required name="thePose" placeholder="Enter a Pose Name" ng-model="pose.name" />
+                    </label>
+                    <p ng-show="form.pose.name.$invalid && !form.pose.name.$pristine" class="help-block">Pose name is required</p>
+                    <label class="item item-input">
+                        <input type="text" required name="theURL" placeholder="Enter a video URL" ng-model="pose.URL" />
+                    </label>
+                    <p ng-show="form.pose.URL.$invalid && !form.pose.URL.$pristine" class="help-block">URL is required</p>
+                    <button type="submit" class="button button-positive  button-block" ng-disabled="form.$invalid">Add Pose</button>
+                </form>
+            </ion-item>
+        </ion-list>
+        <script id="edit-pose.html" type="text/ng-template">
+            <div class="modal">
+                <ion-header-bar class="bar-secondary">
+                    <h1 class="title">Edit Pose</h1>
+                    <button class="button button-assertive" ng-click="closeEditPose()">Cancel</button>
+                </ion-header-bar>
+                <ion-content padding="true" class="has-header">
+                    <ion-list id="editPose">
+                        <ion-item>
+                            <form name="form1" ng-submit="editYogaPose(thePose)" novalidate>
+                                <label class="item item-input">
+                                    <input type="hidden" name="editID" ng-model="thePose.ID" />
+                                    <input type="text" name="editPoseName" placeholder="Enter a Pose Name" ng-model="thePose.YogaPoseName" required />
+                                </label>
+                                <p ng-show="form1.thePose.YogaPoseName.$invalid && !form1.thePose.YogaPoseName.$pristine" class="help-block">Pose name is required</p>
+                                <label class="item item-input">
+                                    <input type="text" name="editPoseURL" placeholder="Enter a video URL" ng-model="thePose.YogaVideoURL" required />
+                                </label>
+                                <p ng-show="form1.thePose.YogaVideoURL.$invalid && !form1.thePose.YogaVideoURL.$pristine" class="help-block">URL is required</p>
+                                <button type="submit" class="button button-block button-positive" ng-disabled="form1.$invalid">Save Changes</button>
+                            </form>
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+            </div>
+        </script>
+        <script id="delete-pose.html" type="text/ng-template">
+            <div class="modal">
+                <ion-header-bar class="bar-secondary">
+                    <h1 class="title">Delete Pose</h1>
+                    <button class="button button-assertive" ng-click="closeDeletePose()">Cancel</button>
+                </ion-header-bar>
+                <ion-content padding="true" class="has-header">
+                    <ion-list id="deletePose">
+                        <ion-item>
+                            <form name="form2" ng-submit="deleteYogaPose(delPose)">
+                                <label class="item item-input">
+                                    <input type="hidden" name="deleteID" ng-model="delPose.ID" />
+                                    Are you sure you want to delete {{delPose.YogaPoseName}}?
+                                </label>
+                                <button type="submit" class="button button-block button-positive">Delete It!</button>
+                            </form>
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+            </div>
+        </script>
+  </ion-content>
+</ion-view>

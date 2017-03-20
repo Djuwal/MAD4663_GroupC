@@ -1,0 +1,31 @@
+<ion-view title="Hiking" id="page14">
+    <ion-content padding="true" class="has-header">
+        <div class="list card" id="hiking-card24">
+            <ion-item class="item-icon-left assertive" id="hiking-list-item38">
+                <i class="icon ion-music-note"></i>Play Playlist
+            </ion-item>
+        </div>
+        <div ng-controller="timerCtrl">
+            <div ng-repeat="options in stopwatches">
+                <div bb-stopwatch options="options">
+                    <div class="container">
+                        <div class="stopWatch numbers">
+                            {{options.elapsedTime | stopwatchTime}}
+                        </div><br />
+                        <button class="button button-balanced" ng-click="startTimer()">Start</button>
+                        <button class="button button-assertive" ng-click="stopTimer()">Stop</button>
+                        <button class="button button-energized" ng-click="resetTimer()">Reset</button>
+                    </div>
+                </div>
+                <div class="log" ng-repeat="log in options.log">
+                    {{log/1000}} seconds
+                </div>
+            </div>
+        </div>
+        <form id="hiking-form13" class="list">
+            <label class="item item-input" id="hiking-textarea7">
+                <span class="input-label">GPS Window</span><textarea placeholder=""></textarea>
+            </label>
+        </form>
+    </ion-content>
+</ion-view>

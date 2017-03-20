@@ -1,0 +1,35 @@
+<ion-view title="Calories" id="page12">
+    <ion-content padding="true" class="has-header" ng-controller="caloriesCtrl">
+        <form id="calories-form11" class="list">
+            <ion-item class="item-icon-left" id="calories-list-item36">
+                <i class="icon ion-bonfire"></i>{{theCalorieTot}}
+                <span class="item-note">Calories</span>
+            </ion-item>
+            <div class="spacer" style="width: 300px; height: 14px;"></div>
+            <ion-item class="item-divider" id="calories-list-item-divider11"> Insert Calorie Count</ion-item>
+            <label class="item item-input" id="calories-input8">
+                <span class="input-label">Input</span>
+                <input type="number" placeholder="ex 567" ng-model="theCalories">
+            </label>
+            <button id="calories-button32" class="button button-positive  button-block" ng-click="addCalories()">Save Calories</button>
+            <div class="card">
+                <div class="item item-divider item-calm">
+                    Calorie History
+                </div>
+                <div class="item item-text-wrap">
+                    <div class="table2">
+                        <div class="row" style="border-bottom: 0.5px solid #4588ba;">
+                            <div class="col col-50"><strong>Date</strong></div>
+                            <div class="col col-100"><strong>Calories</strong></div>
+                        </div>
+                        <div class="row" ng-repeat="item in alldata | limitTo: 5" style="border-bottom: 0.5px solid #4588ba;">
+                            <div class="col col-50">{{item.theDate | date:'MM/dd/yyyy'}}</div>
+                            <div class="col col-100">{{item.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </ion-content>
+</ion-view>

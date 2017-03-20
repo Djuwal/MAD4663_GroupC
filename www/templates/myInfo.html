@@ -1,0 +1,43 @@
+<ion-view title="My Info" id="page18">
+    <ion-content padding="true" class="has-header" ng-controller="myInfoCtrl">
+        <div>
+            <img src="img/r6vZuODGS36L9YlcazC5_WonderWomanNew52.jpg" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+        </div>
+        <form id="myInfo-form15" class="list" ng-repeat="item in userInfo">
+            <ion-item class="item-divider" id="myInfo-list-item-divider17"> Personal Information</ion-item>
+            <label class="item item-input" id="myInfo-input14">
+                <span class="input-label">First Name</span>
+                <input value="{{item.UserFirstName}}" type="text" placeholder="Diana">
+            </label>
+            <label class="item item-input" id="myInfo-input15">
+                <span class="input-label">Last Name</span>
+                <input value="{{item.UserLastName}}" type="text" placeholder="Prince">
+            </label>
+            <label class="item item-input" id="myInfo-input16">
+                <span class="input-label">User Name</span>
+                <input value="{{item.UserName}}" type="text" placeholder="Wonder_Woman">
+            </label>
+            <label class="item item-input" id="myInfo-input10">
+                <span class="input-label">Phone</span>
+                <input value="{{item.PrimaryPhone}}" type="tel" placeholder="5552555555">
+            </label>
+            <label class="item item-input" id="myInfo-input11">
+                <span class="input-label">Email</span>
+                <input value="{{item.PrimaryEmail}}" type="email" placeholder="someone@somthing.com">
+            </label>
+            <label class="item item-input" id="myInfo-input12">
+                <span class="input-label">Birthday</span>
+                <input value="{{item.Birthday}}" type="date" placeholder="01/01/9999">
+            </label>
+            <label class="item item-select" id="myInfo-select3">
+                <span class="input-label">Exercise Preference</span>
+                <select>
+                    <option>Cardio</option>
+                    <option>Muscle Tone</option>
+                    <option>Crossfit</option>
+                    <option>Get in Shape</option>
+                </select>
+            </label>
+        </form>
+    </ion-content>
+</ion-view>
