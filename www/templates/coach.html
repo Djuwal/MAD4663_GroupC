@@ -1,5 +1,5 @@
 <ion-view title="Coach" id="page2" style="background-color:Default;">
-  <ion-content padding="true" class="has-header">
+  <ion-content padding="true" class="has-header" ng-controller="infoCtrlCoach">
     <ion-list id="coach-list1">
       <ion-item class="item-avatar energized" id="coach-list-item1" href="mailto:">
         <img src="img/GfFKYj2ER1yIm0kfd7kW_murray.png">
@@ -10,6 +10,29 @@
       </ion-item>
       <ion-item class="item-divider" id="coach-list-item-divider1"> Messages</ion-item>
     </ion-list>
+        <div class="table1">
+          <form name="form">
+            <label class="item item-input">
+              <input type="text" name="theComment" placeholder="Coach enter a comment" ng-model="comment">
+            </label>
+
+            <button class="button button-positive  button-block" ng-click="addInfo()" style="background-color:green;">Add Comment</button>
+            
+          </form>
+        </div>
+
+        <div class="table2">
+          <div class="row" style="border-bottom: 0.5px solid #4588ba;">
+            <div class="col col-20"><strong>Date</strong></div>
+            <div class="col col-100"><strong>Comment</strong></div>
+          </div>
+
+          <div class="row" ng-repeat="item in alldata" style="border-bottom: 0.5px solid green;">
+            <div class="col col-20">{{item.currentdate}}</div>
+            <div class="col col-100">{{item.comment}}</div>
+          </div>
+        </div>
+
     <div class="item item-body" id="coach-list-item-container1">
       <ion-list id="coach-list12">
         <ion-item class="item-divider" id="coach-list-item-divider12"> 02/24/2017</ion-item>

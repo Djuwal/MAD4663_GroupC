@@ -35,9 +35,9 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
         // JC ADDED - DW Edited
         db = window.openDatabase("iwb.db", "1.0", "sqlitedemo", 2000); // create a database with the name iwb
         // create the forum table
-        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS forumDB(id integer primary key, comment text)");
+        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS forumDB(id integer primary key, comment text, currentdate text)");
         // create the coach table
-        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS coachDB(id integer primary key, comment text)");
+        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS coachDB(id integer primary key, comment text, currentdate text)");
         // create user table
         //$cordovaSQLite.execute(db, "DROP TABLE IF EXISTS User_Table");
         $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS User_Table(ID integer primary key, UserName text, Password text, PrimaryEmail text, Birthday date, PrimaryPhone text, UserFirstName text, UserLastName text, ExerciseType int, IsUser int, IsCoach int, IsAdmin int, UserPic text)");

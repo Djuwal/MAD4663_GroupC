@@ -606,20 +606,63 @@ function ($scope, $stateParams, $cordovaSQLite, $interval, $ionicModal) {
 
 }])
 
-// JC ADDED controller
+// JC ADDED controller FORUM DB
 // *****************************
 .controller('infoCtrl', function ($scope, $cordovaSQLite, $interval) {
 
     $scope.addInfo = function () {
-        var query = "INSERT INTO forumDB(comment) VALUES (?)";
-        $cordovaSQLite.execute(db, query, [$scope.comment]);
+        var d = new Date();
+        var myDate = d.toLocaleDateString();
+
+        var query = "INSERT INTO forumDB(comment, currentdate) VALUES (?, ?)";
+        $cordovaSQLite.execute(db, query, [$scope.comment, myDate]);
         $scope.load();
         //$scope.form.$setPristine();
         $scope.comment = '';
     }
     $scope.load = function () {
         $scope.alldata = [];
-        $cordovaSQLite.execute(db, "SELECT id, comment FROM forumDB ORDER BY id DESC").then(function (result) {
+        $cordovaSQLite.execute(db, "SELECT id, comment, currentdate FROM forumDB ORDER BY id DESC").then(function (result) {
+            if (result.rows.length) {
+                for (var i = 0; i < result.rows.length; i++) {
+                    $scope.alldata.push(result.rows.item(i));
+                }
+            } else {
+                console.log("No data found");
+            }
+        }, function (error) {
+            console.log("error" + err);
+        });
+    }
+
+    // Run once. Load the data from the database.
+    $interval(callAtStart, 500, 1);
+
+    function callAtStart() {
+        $scope.load();
+    }
+
+})
+
+// End JC Controller.
+
+// JC ADDED controller COACH DB
+// *****************************
+.controller('infoCtrlCoach', function ($scope, $cordovaSQLite, $interval) {
+
+    $scope.addInfo = function () {
+        var d = new Date();
+        var myDate = d.toLocaleDateString();
+
+        var query = "INSERT INTO coachDB(comment, currentdate) VALUES (?, ?)";
+        $cordovaSQLite.execute(db, query, [$scope.comment, myDate]);
+        $scope.load();
+        //$scope.form.$setPristine();
+        $scope.comment = '';
+    }
+    $scope.load = function () {
+        $scope.alldata = [];
+        $cordovaSQLite.execute(db, "SELECT id, comment, currentdate FROM coachDB ORDER BY id DESC").then(function (result) {
             if (result.rows.length) {
                 for (var i = 0; i < result.rows.length; i++) {
                     $scope.alldata.push(result.rows.item(i));
